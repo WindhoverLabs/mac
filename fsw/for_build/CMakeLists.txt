@@ -48,6 +48,9 @@ add_airliner_app_def(mac
     INCLUDES
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/
         ${PX4_MSGS_DIR}
+
+    USER_DOCS   ${CMAKE_CURRENT_SOURCE_DIR}/user_doxy.in
+    DESIGN_DOCS ${CMAKE_CURRENT_SOURCE_DIR}/detail_doxy.in 
 )
 
 add_airliner_app_unit_test(MAC-UT
