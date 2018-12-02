@@ -11,7 +11,7 @@ module.exports = class CfeCdrPlugin extends CdrPlugin {
 
   getContent() {
     var result = {
-      shortDescription: 'MAC',
+      shortDescription: 'Multicopter Attitude Control',
       longDescription: 'Multicopter Attitude Control.',
       nodes: {
         main: {
