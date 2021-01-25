@@ -40,8 +40,6 @@ add_airliner_app_def(mac
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_config_utils.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_events.h
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_msg.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_private_ids.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_private_types.h
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_tbldefs.h
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_version.h
 
@@ -49,17 +47,18 @@ add_airliner_app_def(mac
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/
         ${PX4_MSGS_DIR}
 
-    USER_DOCS   ${CMAKE_CURRENT_SOURCE_DIR}/user_doxy.in
     DESIGN_DOCS ${CMAKE_CURRENT_SOURCE_DIR}/detail_doxy.in
-
-    MSG_OVERRIDES ${CMAKE_CURRENT_SOURCE_DIR}/mac_msg_overrides.json
-
-    COMMANDER_PLUGIN
-        ${CMAKE_CURRENT_SOURCE_DIR}/../../cdr
+    
+    REFERENCE_CONFIG
+        ${PROJECT_SOURCE_DIR}/apps/mac/fsw/mission_inc
+        ${PROJECT_SOURCE_DIR}/apps/mac/fsw/platform_inc
 )
 
-add_airliner_app_unit_test(MAC-UT
+add_airliner_app_unit_test(mac-ut
     UTASSERT
+    NO_HELGRIND
+    NO_MASSIF
+
     SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/../unit_test/mac_app_test.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/../unit_test/mac_app_test.hpp
@@ -75,7 +74,6 @@ add_airliner_app_unit_test(MAC-UT
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_app.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_events.h
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_msg.h
-        ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_private_types.h
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_tbldefs.h
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_version.h
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_config_utils.cpp
@@ -87,4 +85,7 @@ add_airliner_app_unit_test(MAC-UT
 
     VALGRIND_SUPPRESSION_FILE
         ${CMAKE_CURRENT_SOURCE_DIR}/../unit_test/mac-ut.supp
+        
+    REFERENCE_CUSTOM_SOURCE
+        ${CMAKE_CURRENT_SOURCE_DIR}/../tables/mac_param.c
 )
