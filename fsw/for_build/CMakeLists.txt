@@ -32,7 +32,7 @@
 #############################################################################
 
 
-add_airliner_app_def(mac
+buildliner_add_app_def(mac
     FILE MAC
     SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/mac_app.cpp
@@ -54,7 +54,7 @@ add_airliner_app_def(mac
         ${PROJECT_SOURCE_DIR}/apps/mac/fsw/platform_inc
 )
 
-add_airliner_app_unit_test(mac-ut
+buildliner_add_app_unit_test(mac-ut
     UTASSERT
     NO_HELGRIND
     NO_MASSIF
